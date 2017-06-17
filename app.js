@@ -1,5 +1,5 @@
 // Llamado a express
-var espress = require('express');
+var express = require('express');
 var path = require('path'); 
 var fs = require('fs'); 
 // Favicon, log-console, bodyParser and Multer (upload files)
@@ -15,7 +15,9 @@ var app = express();
 app.use(logger('dev')); 
 // Parsing body in json format 
 app.use(bodyParser.json()); 
-app.use(bodyParser.urlenconded({extended:false}));
+app.use(bodyParser.urlencoded({
+	extended : false
+}));
 // Configurar carpeta temporal donde se guardaran las imágenes (single upload)
 app.use(multer({dest : './uploads/'}).single('photo'));
 
