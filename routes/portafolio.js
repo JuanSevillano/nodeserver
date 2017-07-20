@@ -1,11 +1,16 @@
 /*
 	Router template for node service 
 	Creted by @Juansevillano 2017 
-*/ 
+	*/ 
 
-var express = require('express'); 
-var bodyParser = require('body-parser'); 
-var fs = require('fs'); 
+	var express = require('express'); 
+	var bodyParser = require('body-parser'); 
+	var fs = require('fs'); 
+	//var hidden = express(); 
+
+	//var io = require('socket.io')(); 
+
+
 // Setting sync controller
 var userController = require('../model-controller/user-controller');
 
@@ -16,14 +21,25 @@ module.exports = (function () {
 	// Parsing body data request 
 	router.use(bodyParser.json());
 
+
 	// creation of public variables in this section 
 	var userId = undefined;
 
 	// On get request to /portfolio 
 	router.route('/').get(function(req,res){
-		console.log(req.body); 
-		// Web response 
-		res.send('hola caballo'); 
+
+		res.send('<h1>Hidden homepage</h1>');
+		// getting sketch path 
+		//var dirI = __dirname.split('routes'); 
+		//var dirF = dirI[0] + 'public/index.html' ; 
+		// sending a portfolio sketch 
+	 	//res.sendFile(dirF, function (err) {
+		//    if (err) {
+		//      console.log('Te tiro el error ' + err); 
+		//    } else {
+		//      console.log('Sent:', dirF);
+		//    }
+	    //});
 	});
 
 	/* POST METHOD WITH UPLOAD IMAGE  
