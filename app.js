@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 var multer = require('multer'); 
 //  Getting routers
 var portafolio = require('./routes/portafolio'); 
+var room = require('./routes/room'); 
 // App a expres method with server in 
 var app = express();
 // Making a hidden service for portfolio 
@@ -30,7 +31,9 @@ app.use(multer({dest : './uploads/'}).single('photo'));
 
 
 // ------ Put here the routers ------ // 
-app.use('/portfolio',portafolio);
+app.use('/portfolio',portafolio); // @JuanSevillano portfolio 
+app.use('/room',room); // room IoT router  
+
 //app.use('/dashboard',dashRouter);
 io.on('connection', function(socket){
   console.log('a user connected');
@@ -58,7 +61,7 @@ app.use(function (err, req, res, next) {
 });
 
 // Host ip and port  
-var hostname = 'localhost';
+var hostname = '192.168.0.19';
 var port = 3000;
 // iniciando server
  app.listen(port, hostname, function () {
